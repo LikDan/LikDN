@@ -3,9 +3,12 @@ version: '3.1'
 services:
   server:
     image: docker.studyum.net/likdn
-    env_file:
-      - .env
+    restart: always
+    # noinspection ComposeUnknownKeys
+    pull_policy: always
     ports:
       - "80:9292"
+    env_file:
+      - .env
     volumes:
       - ./storage:/storage:rw

@@ -1,2 +1,3 @@
-require './main'
-run Sinatra::Application
+require './app/storage/handler'
+
+run Rack::Cascade.new [Handler]
