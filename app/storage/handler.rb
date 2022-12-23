@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'sinatra'
+require 'json'
 require 'securerandom'
 require './app/storage/controller'
 
@@ -16,7 +17,7 @@ class Handler < Sinatra::Base
     file = params[:file]
     path = @controller.store_file file
 
-    "#{@server_url}#{path}"
+    { url: "#{@server_url}#{path}" }.to_json
   end
 
   get '/storage/:path' do
