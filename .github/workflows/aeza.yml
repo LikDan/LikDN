@@ -26,7 +26,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: api:latest api:${{ github.sha }}
+          tags:
+            - api:latest
+            - api:${{ github.sha }}
 
   deploy:
     name: Deploy
