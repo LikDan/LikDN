@@ -6,10 +6,9 @@ services:
     image: docker.studyum.net/likdn
     restart: always
     pull_policy: always
-    build: .
     env_file:
       - ".env"
     ports:
-      - "8080:8080"
+      - "80:8080"
     volumes:
       - ./storage:/storage
