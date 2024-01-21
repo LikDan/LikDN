@@ -1,0 +1,25 @@
+volumes:
+  storage:
+
+services:
+  db:
+    image: postgres:16-alpine
+    ports:
+      - 32:5432
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    env_file:
+      - "env/postgres.env"
+  api:
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile
+    restart: always
+    pull_policy: always
+    env_file:
+      - "env/app.env"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./storage:/storage
+      - ./migrations:/migrations

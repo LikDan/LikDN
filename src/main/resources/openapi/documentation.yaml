@@ -1,0 +1,2119 @@
+openapi: "3.0.3"
+info:
+  title: "LikDN API"
+  description: "LikDN API"
+  version: "1.0.0"
+servers:
+- url: "https://LikDN"
+paths:
+  /{filename}:
+    get:
+      description: ""
+      parameters:
+      - name: "filename"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+  /{filename}/info:
+    get:
+      description: ""
+      parameters:
+      - name: "filename"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StorageDTO"
+  /api/billing:
+    get:
+      description: ""
+      parameters:
+      - name: "planID"
+        in: "query"
+        required: false
+        schema:
+          type: "string"
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BillingDTO"
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/CreateBillingDTO"
+        required: true
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BillingDTO"
+  /api/billing/payment:
+    get:
+      description: ""
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK <br> A file response"
+          content:
+            application/*:
+              schema:
+                type: "object"
+                format: "binary"
+  /api/billing/plans:
+    get:
+      description: ""
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BillingWithPlanDTO"
+  /api/customers:
+    delete:
+      description: "todo, for now use stripe dashboard <br> patch(\"billing\") { <br>\
+        \ call.token(TokenPermissions.MANAGE_BILLING) <br> val billingID = call.receive<String>()\
+        \ <br> val customer = call.customer() <br> CustomersController.changeBillingPlan(customer,\
+        \ billingID) <br> }"
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/CreateCustomerDTO"
+        required: true
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CreateCustomerResponseDTO"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    customer: "null"
+                    paymentDescription: "to continue to payment please follow this\
+                      \ link"
+                    paymentLink: "http://localhost:8080/api/billing/payment"
+  /api/customers/dashboard:
+    get:
+      description: "todo change name <br> todo -> active tokens, current stats, balance..."
+  /api/customers/self:
+    get:
+      description: ""
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CustomerDTO"
+  /api/plans:
+    get:
+      description: ""
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/PlanDTO"
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/CreatePlanDTO"
+        required: true
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PlanDTO"
+  /api/storage:
+    get:
+      description: ""
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/StorageDTO"
+    post:
+      description: ""
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StorageDTO"
+  /api/storage/{filename}:
+    delete:
+      description: ""
+      parameters:
+      - name: "filename"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StorageDTO"
+    get:
+      description: ""
+      parameters:
+      - name: "filename"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+  /api/storage/{filename}/info:
+    get:
+      description: ""
+      parameters:
+      - name: "filename"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StorageDTO"
+  /api/tokens:
+    get:
+      description: ""
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/TokenDTO"
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/CreateTokenDTO"
+        required: true
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TokenDTO"
+  /api/tokens/{id}:
+    delete:
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "403":
+          description: "Forbidden"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "402":
+          description: "Payment Required"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "401":
+          description: "Unauthorized"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "422":
+          description: "Unprocessable Entity"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "404":
+          description: "Not Found"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "500":
+          description: "Internal Server Error"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ExceptionInformation"
+              examples:
+                Example#1:
+                  description: ""
+                  value:
+                    message: "message text"
+                    status: "status text"
+                    trace: "null"
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+  /cdn/{filename}:
+    get:
+      description: ""
+      parameters:
+      - name: "filename"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+  /cdn/{filename}/info:
+    get:
+      description: ""
+      parameters:
+      - name: "filename"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StorageDTO"
+components:
+  schemas:
+    StorageDTO:
+      type: "object"
+      properties:
+        originFileName:
+          type: "string"
+        fileName:
+          type: "string"
+        fileSize:
+          type: "integer"
+          format: "int64"
+        contentType:
+          type: "array"
+          items:
+            type: "string"
+        shortenFileName:
+          type: "string"
+        mimeType:
+          type: "string"
+          enum:
+          - "AAC"
+          - "ABW"
+          - "ARC"
+          - "AVIF"
+          - "AVI"
+          - "AZW"
+          - "BIN"
+          - "BMP"
+          - "BZ"
+          - "BZ2"
+          - "CDA"
+          - "CSH"
+          - "CSS"
+          - "CSV"
+          - "DOC"
+          - "DOCX"
+          - "EOT"
+          - "EPUB"
+          - "GZ"
+          - "GIF"
+          - "HTM"
+          - "HTML"
+          - "ICO"
+          - "ICS"
+          - "JAR"
+          - "JPEG"
+          - "JPG"
+          - "JS"
+          - "JSON"
+          - "JSONLD"
+          - "MID"
+          - "MIDI"
+          - "MJS"
+          - "MP3"
+          - "MP4"
+          - "MPEG"
+          - "MPKG"
+          - "ODP"
+          - "ODS"
+          - "ODT"
+          - "OGA"
+          - "OGV"
+          - "OGX"
+          - "OPUS"
+          - "OTF"
+          - "PNG"
+          - "PDF"
+          - "PHP"
+          - "PPT"
+          - "PPTX"
+          - "RAR"
+          - "RTF"
+          - "SH"
+          - "SVG"
+          - "TAR"
+          - "TIF"
+          - "TIFF"
+          - "TS"
+          - "TTF"
+          - "TXT"
+          - "VSD"
+          - "WAV"
+          - "WEBA"
+          - "WEBM"
+          - "WEBP"
+          - "WOFF"
+          - "WOFF2"
+          - "XHTML"
+          - "XLS"
+          - "XLSX"
+          - "XML"
+          - "XUL"
+          - "ZIP"
+          - "_3GP"
+          - "_3G2"
+          - "_7Z"
+          - "UNKNOWN"
+          - "ALL"
+        group:
+          type: "string"
+        data:
+          type: "string"
+        customerID:
+          type: "string"
+        tokenID:
+          type: "string"
+      required:
+      - "originFileName"
+      - "fileName"
+      - "contentType"
+      - "mimeType"
+      - "customerID"
+      - "tokenID"
+    ExceptionInformation:
+      type: "object"
+      properties:
+        message:
+          type: "string"
+        status:
+          type: "string"
+        trace:
+          type: "string"
+      required:
+      - "message"
+      - "status"
+    BillingDTO:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        period:
+          type: "string"
+          enum:
+          - "DAILY"
+          - "WEEKLY"
+          - "MONTHLY"
+          - "ANNUALLY"
+        price:
+          type: "number"
+          format: "float"
+        planID:
+          type: "string"
+      required:
+      - "id"
+      - "period"
+      - "planID"
+    CreateBillingDTO:
+      type: "object"
+      properties:
+        period:
+          type: "string"
+          enum:
+          - "DAILY"
+          - "WEEKLY"
+          - "MONTHLY"
+          - "ANNUALLY"
+        price:
+          type: "number"
+          format: "float"
+        planID:
+          type: "string"
+      required:
+      - "period"
+      - "planID"
+    BillingWithPlanDTO:
+      type: "object"
+      properties:
+        billingID:
+          type: "string"
+        planID:
+          type: "string"
+        name:
+          type: "string"
+        period:
+          type: "string"
+          enum:
+          - "DAILY"
+          - "WEEKLY"
+          - "MONTHLY"
+          - "ANNUALLY"
+        maxFiles:
+          type: "integer"
+          format: "int64"
+        maxStorage:
+          type: "string"
+        price:
+          type: "string"
+        shortURL:
+          type: "boolean"
+      required:
+      - "billingID"
+      - "planID"
+      - "name"
+      - "period"
+      - "maxStorage"
+      - "price"
+    CreateCustomerDTO:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        email:
+          type: "string"
+      required:
+      - "name"
+      - "email"
+    TokenDTO:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        token:
+          type: "string"
+        name:
+          type: "string"
+        expireAt:
+          type: "string"
+        issuedAt:
+          type: "string"
+        permissions:
+          type: "array"
+          items:
+            type: "string"
+            enum:
+            - "ALL"
+            - "READ"
+            - "GET_FILE_LIST"
+            - "READ_INFO"
+            - "WRITE"
+            - "DELETE"
+            - "MANAGE_TOKENS"
+            - "MANAGE_BILLING"
+        mimeTypes:
+          type: "string"
+          enum:
+          - "AAC"
+          - "ABW"
+          - "ARC"
+          - "AVIF"
+          - "AVI"
+          - "AZW"
+          - "BIN"
+          - "BMP"
+          - "BZ"
+          - "BZ2"
+          - "CDA"
+          - "CSH"
+          - "CSS"
+          - "CSV"
+          - "DOC"
+          - "DOCX"
+          - "EOT"
+          - "EPUB"
+          - "GZ"
+          - "GIF"
+          - "HTM"
+          - "HTML"
+          - "ICO"
+          - "ICS"
+          - "JAR"
+          - "JPEG"
+          - "JPG"
+          - "JS"
+          - "JSON"
+          - "JSONLD"
+          - "MID"
+          - "MIDI"
+          - "MJS"
+          - "MP3"
+          - "MP4"
+          - "MPEG"
+          - "MPKG"
+          - "ODP"
+          - "ODS"
+          - "ODT"
+          - "OGA"
+          - "OGV"
+          - "OGX"
+          - "OPUS"
+          - "OTF"
+          - "PNG"
+          - "PDF"
+          - "PHP"
+          - "PPT"
+          - "PPTX"
+          - "RAR"
+          - "RTF"
+          - "SH"
+          - "SVG"
+          - "TAR"
+          - "TIF"
+          - "TIFF"
+          - "TS"
+          - "TTF"
+          - "TXT"
+          - "VSD"
+          - "WAV"
+          - "WEBA"
+          - "WEBM"
+          - "WEBP"
+          - "WOFF"
+          - "WOFF2"
+          - "XHTML"
+          - "XLS"
+          - "XLSX"
+          - "XML"
+          - "XUL"
+          - "ZIP"
+          - "_3GP"
+          - "_3G2"
+          - "_7Z"
+          - "UNKNOWN"
+          - "ALL"
+        groups:
+          type: "string"
+        customerID:
+          type: "string"
+      required:
+      - "id"
+      - "token"
+      - "name"
+      - "issuedAt"
+      - "permissions"
+      - "mimeTypes"
+      - "groups"
+      - "customerID"
+    CustomerDTO:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        name:
+          type: "string"
+        balance:
+          type: "number"
+          format: "float"
+        nextPaymentAt:
+          type: "string"
+        billingID:
+          type: "string"
+        token:
+          $ref: "#/components/schemas/TokenDTO"
+      required:
+      - "id"
+      - "name"
+      - "nextPaymentAt"
+      - "billingID"
+    CreateCustomerResponseDTO:
+      type: "object"
+      properties:
+        customer:
+          $ref: "#/components/schemas/CustomerDTO"
+        paymentDescription:
+          type: "string"
+        paymentLink:
+          type: "string"
+      required:
+      - "customer"
+      - "paymentDescription"
+      - "paymentLink"
+    PlanDTO:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        name:
+          type: "string"
+        maxStorage:
+          type: "integer"
+          format: "int64"
+        maxFiles:
+          type: "integer"
+          format: "int64"
+        backup:
+          type: "boolean"
+        shortURL:
+          type: "boolean"
+      required:
+      - "id"
+      - "name"
+    CreatePlanDTO:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        maxStorage:
+          type: "integer"
+          format: "int64"
+        maxFiles:
+          type: "integer"
+          format: "int64"
+        backup:
+          type: "boolean"
+        shortURL:
+          type: "boolean"
+      required:
+      - "name"
+    CreateTokenDTO:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        expireAt:
+          type: "string"
+        permissions:
+          type: "string"
+          enum:
+          - "ALL"
+          - "READ"
+          - "GET_FILE_LIST"
+          - "READ_INFO"
+          - "WRITE"
+          - "DELETE"
+          - "MANAGE_TOKENS"
+          - "MANAGE_BILLING"
+        mimeTypes:
+          type: "string"
+          enum:
+          - "AAC"
+          - "ABW"
+          - "ARC"
+          - "AVIF"
+          - "AVI"
+          - "AZW"
+          - "BIN"
+          - "BMP"
+          - "BZ"
+          - "BZ2"
+          - "CDA"
+          - "CSH"
+          - "CSS"
+          - "CSV"
+          - "DOC"
+          - "DOCX"
+          - "EOT"
+          - "EPUB"
+          - "GZ"
+          - "GIF"
+          - "HTM"
+          - "HTML"
+          - "ICO"
+          - "ICS"
+          - "JAR"
+          - "JPEG"
+          - "JPG"
+          - "JS"
+          - "JSON"
+          - "JSONLD"
+          - "MID"
+          - "MIDI"
+          - "MJS"
+          - "MP3"
+          - "MP4"
+          - "MPEG"
+          - "MPKG"
+          - "ODP"
+          - "ODS"
+          - "ODT"
+          - "OGA"
+          - "OGV"
+          - "OGX"
+          - "OPUS"
+          - "OTF"
+          - "PNG"
+          - "PDF"
+          - "PHP"
+          - "PPT"
+          - "PPTX"
+          - "RAR"
+          - "RTF"
+          - "SH"
+          - "SVG"
+          - "TAR"
+          - "TIF"
+          - "TIFF"
+          - "TS"
+          - "TTF"
+          - "TXT"
+          - "VSD"
+          - "WAV"
+          - "WEBA"
+          - "WEBM"
+          - "WEBP"
+          - "WOFF"
+          - "WOFF2"
+          - "XHTML"
+          - "XLS"
+          - "XLSX"
+          - "XML"
+          - "XUL"
+          - "ZIP"
+          - "_3GP"
+          - "_3G2"
+          - "_7Z"
+          - "UNKNOWN"
+          - "ALL"
+        groups:
+          type: "string"
+      required:
+      - "name"
+      - "permissions"
+      - "mimeTypes"
+      - "groups"
